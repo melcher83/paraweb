@@ -16,10 +16,13 @@ Including another URLconf
 
 from django.conf.urls import url
 from django.contrib import admin
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
-import web.views
+import web_app.views.index
 
 urlpatterns = [
-
-    url(r'^$', web.views.index.page),
+    url (r'^index$', web_app.views.index.page, name='index'),
+    url(r'^$', web_app.views.index.page),
 ]
+
+urlpatterns += staticfiles_urlpatterns()
