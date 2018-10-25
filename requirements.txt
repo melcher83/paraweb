@@ -1,5 +1,5 @@
 Django
-paramiko
+netmiko
 pyasn1
 pytz
 gunicorn

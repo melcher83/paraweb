@@ -87,7 +87,7 @@ Vagrant.configure("2") do |config|
     inline: "pip3 install -r paraweb/requirements.txt"
   config.vm.provision "shell",
 
-    inline: "python3 gunicorn Paraweb.wsgi -b 0.0.0.0:80"
+    inline: "python3 paraweb manage.py runserver 80"
 
 
   config.vm.provider :virtualbox do |vb|
