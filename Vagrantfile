@@ -70,7 +70,13 @@ Vagrant.configure("2") do |config|
     inline: "apt-get -y install git"
   config.vm.provision "shell",
 
+    inline: "apt-get -y install python-pip"
+  config.vm.provision "shell",
+
     inline: "git clone https://github.com/melcher83/paraweb.git"
+  config.vm.provision "shell",
+
+    inline: "pip install -r paraweb/requirements.txt"
 
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
