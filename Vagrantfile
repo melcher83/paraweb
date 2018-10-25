@@ -78,10 +78,10 @@ Vagrant.configure("2") do |config|
     inline: "git clone https://github.com/melcher83/paraweb.git"
   config.vm.provision "shell",
 
-    inline: "pip install -U setuptools"
+    inline: "pip3 install -U setuptools"
   config.vm.provision "shell",
 
-    inline: "pip install -r paraweb/requirements.txt"
+    inline: "pip3 install -r paraweb/requirements.txt"
   config.vm.provision "shell",
 
     inline: "python3 gunicorn Paraweb.wsgi -b 0.0.0.0:80"
