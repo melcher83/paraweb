@@ -77,7 +77,7 @@ Vagrant.configure("2") do |config|
     inline: "git clone https://github.com/melcher83/paraweb.git"
   config.vm.provision "shell",
 
-    inline: "pip install setuptools"
+    inline: "pip install -U setuptools"
   config.vm.provision "shell",
 
     inline: "pip install -r paraweb/requirements.txt"
