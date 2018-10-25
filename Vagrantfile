@@ -64,15 +64,15 @@ Vagrant.configure("2") do |config|
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
   config.vm.network "forwarded_port", guest: 80, host: 8081
-  config.vm.provision "shell",
-    inline: "apt-get update"
+  #config.vm.provision "shell",
+    #inline: "apt-get update"
   config.vm.provision "shell",
 
     inline: "apt-get -y install git"
 
   config.vm.provision "shell",
 
-    inline: "apt-get -y install python-pip"
+    inline: "apt-get -y install python3-pip"
   config.vm.provision "shell",
 
     inline: "git clone https://github.com/melcher83/paraweb.git"
