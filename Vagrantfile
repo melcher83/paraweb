@@ -71,6 +71,9 @@ Vagrant.configure("2") do |config|
     inline: "apt-get -y install git"
   config.vm.provision "shell",
 
+    inline: "apt-get -y install python3.7"
+  config.vm.provision "shell",
+
     inline: "apt-get -y install python-pip"
   config.vm.provision "shell",
 
