@@ -69,9 +69,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell",
 
     inline: "apt-get -y install git"
-  config.vm.provision "shell",
 
-    inline: "apt-get -y install python3.7"
   config.vm.provision "shell",
 
     inline: "apt-get -y install python-pip"
@@ -86,7 +84,7 @@ Vagrant.configure("2") do |config|
     inline: "pip install -r paraweb/requirements.txt"
   config.vm.provision "shell",
 
-    inline: "gunicorn Paraweb.wsgi -b 0.0.0.0:80"
+    inline: "python3 gunicorn Paraweb.wsgi -b 0.0.0.0:80"
 
 
   config.vm.provider :virtualbox do |vb|
