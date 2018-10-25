@@ -63,31 +63,18 @@ Vagrant.configure("2") do |config|
   # Enable provisioning with a shell script. Additional provisioners such as
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
-  config.vm.network "forwarded_port", guest: 80, host: 8081
+  config.vm.network "forwarded_port", guest: 8000, host: 80
   config.vm.provision "shell",
     inline: "apt-get update"
   config.vm.provision "shell",
-
     inline: "apt-get -y install git"
-
   config.vm.provision "shell",
-
-    inline: "apt-get -y install python3-pip"
-   config.vm.provision "shell",
-
-    inline: "pip3 install --upgrade pip"
-  config.vm.provision "shell",
-
     inline: "git clone https://github.com/melcher83/paraweb.git"
   config.vm.provision "shell",
-
-    inline: "pip3 install -U setuptools"
+    inline: "curl -fsSL get.docker.com -o get-docker.sh"
   config.vm.provision "shell",
+    inline: "sh get-docker.sh"
 
-    inline: "pip3 install -r paraweb/requirements.txt"
-  config.vm.provision "shell",
-
-    inline: "python3 paraweb manage.py runserver 80"
 
 
   config.vm.provider :virtualbox do |vb|
