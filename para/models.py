@@ -33,7 +33,7 @@ class Network_object(models.Model):
 class SSH_credentials(models.Model):
     Network_object = models.ForeignKey(Network_object, verbose_name="Network_object", null=True, default=None, blank=True,on_delete = models.CASCADE)
     username=models.CharField(verbose_name='username',max_length=30)
-    password=models.Charfield(verbose_name='Password', max_length=300)  #need to figure a way out to secure this but also be able to pull it up when needed
+    password=models.CharField(verbose_name='Password', max_length=300)  #need to figure a way out to secure this but also be able to pull it up when needed
 
 
 
