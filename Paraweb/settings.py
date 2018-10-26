@@ -25,7 +25,7 @@ SECRET_KEY = 'dhhza=#go*$8ek-g2^@c8-w#6w-h(ys^3_(b^=@01o0+bz2%+l'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['web']
 
 
 # Application definition
