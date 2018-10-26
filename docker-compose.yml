@@ -10,17 +10,18 @@ services:
       - ./config/nginx:/etc/nginx/conf.d
     depends_on:
       - web
+
+
+  db:
+    image: postgres:latest
+    container_name: db
   web:
     build: .
     container_name: web
-    command: bash -c "python3 manage.py makemigrations && python3 manage.py migrate && gunicorn paraweb.wsgi  -b 0.0.0.0:8000"
+    command: bash -c "python3 manage.py makemigrations && python3 manage.py migrate && gunicorn Paraweb.wsgi  -b 0.0.0.0:8000"
     depends_on:
       - db
     volumes:
       - ./:/src
     expose:
       - "8000"
-
-  db:
-    image: postgres:latest
-    container_name: db
