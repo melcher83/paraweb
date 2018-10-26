@@ -69,8 +69,6 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell",
     inline: "apt-get -y install git"
   config.vm.provision "shell",
-    inline: "git clone https://github.com/melcher83/paraweb.git"
-  config.vm.provision "shell",
     inline: "curl -fsSL get.docker.com -o get-docker.sh"
   config.vm.provision "shell",
     inline: "sh get-docker.sh"
@@ -78,13 +76,6 @@ Vagrant.configure("2") do |config|
     inline: "sudo curl -L https://github.com/docker/compose/releases/download/1.18.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose"
   config.vm.provision "shell",
     inline: "sudo chmod +x /usr/local/bin/docker-compose"
-  config.vm.provision "shell",
-    inline: "docker-compose -f paraweb/docker-compose.yml up -d"
-
-
-
-
-
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
   end
