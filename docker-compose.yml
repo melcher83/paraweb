@@ -11,10 +11,6 @@ services:
     depends_on:
       - web
 
-
-  db:
-    image: postgres:latest
-    container_name: db
   web:
     build: .
     container_name: web
@@ -25,3 +21,6 @@ services:
       - ./:/src
     expose:
       - "8000"
+  db:
+    image: postgres:latest
+    container_name: db
