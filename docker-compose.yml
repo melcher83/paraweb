@@ -2,7 +2,7 @@ version: '2'
 services:
   nginx:
     image: nginx:latest
-    container_name: ncart-ng01
+    container_name: nginx
     ports:
       - "80:80"
     volumes:
@@ -12,7 +12,7 @@ services:
       - web
 
   web:
-    build: .
+    image: melcher83/paraweb
     container_name: web
     command: bash -c "python3 manage.py makemigrations && python3 manage.py migrate && gunicorn Paraweb.wsgi  -b 0.0.0.0:8000"
     depends_on:
