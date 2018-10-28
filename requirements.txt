@@ -17,3 +17,9 @@ scp==0.12.1
 six==1.11.0
 textfsm==0.4.1
 psycopg2
+'graphviz',
+'pysnmp',
+'pydot',
+'pysnmp>=4.2.5',
+'pyparsing',
+'netaddr>=0.7.14'
