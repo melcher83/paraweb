@@ -53,5 +53,14 @@ class SNMPv3_credentials(models.Model):
     def __unicode__(self):
         return self.username
 
+class SNMPv2_credentials(models.Model):
+    Client = models.ForeignKey(Client, verbose_name="Network_object", null=True, default=None, blank=True,on_delete = models.CASCADE)
+    community = models.CharField(verbose_name='Community', max_length=300)
+
+
+
+    def __unicode__(self):
+        return self.community
+
 
 
