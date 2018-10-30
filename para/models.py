@@ -12,7 +12,7 @@ class Client(models.Model):
     date_end = models.DateField(verbose_name='Date Ended',null=True, default=None, blank=True)
     contact = models.CharField(verbose_name='Contact', max_length=100)
     email = models.EmailField(verbose_name='Email',null=True, default=None)
-    subnets = models.CharField(verbose_name='Subnets', null=True, default=None,max_length=300)
+    rootip = models.CharField(verbose_name='IP ROOT', null=True, default=None,max_length=300)
 
     def __unicode__(self):
         return self.client
