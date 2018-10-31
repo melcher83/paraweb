@@ -1,5 +1,5 @@
-#from web.models import Project
+from para.models import Client
 from django.shortcuts import render
 def page(request):
-  #all_projects = Project.objects.all()
-  return render(request, 'index.html', {'action': "Select an Action", })
+  allclients = Client.objects.all()
+  return render(request, 'index.html', {'allclients': allclients })
