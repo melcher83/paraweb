@@ -13,6 +13,7 @@ class Client(models.Model):
     contact = models.CharField(verbose_name='Contact', max_length=100)
     email = models.EmailField(verbose_name='Email',null=True, default=None)
     rootip = models.CharField(verbose_name='IP ROOT', null=True, default=None,max_length=300)
+    snmp_com = models.CharField(verbose_name='SNMPv2 Community', null=True, default=None, max_length=300)
 
     def __unicode__(self):
         return self.client
@@ -52,15 +53,6 @@ class SNMPv3_credentials(models.Model):
 
     def __unicode__(self):
         return self.username
-
-class SNMPv2_credentials(models.Model):
-    Client = models.ForeignKey(Client, verbose_name="Network_object", null=True, default=None, blank=True,on_delete = models.CASCADE)
-    community = models.CharField(verbose_name='Community', max_length=300)
-
-
-
-    def __unicode__(self):
-        return self.community
 
 
 
