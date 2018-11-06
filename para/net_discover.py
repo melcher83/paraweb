@@ -17,4 +17,4 @@ class discover:
 
         natlas_obj.discover_network(form1.rootip, 1)) #discover network
         nodes=natlas_obj.get_discovered_nodes()
-        print(nodes)
+        print(nodes[1].serial)
