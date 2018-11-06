@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title_html %}
+  Client Details
+{% endblock %}
+{% block h1 %}
+  Client Details
+{% endblock %}
+{% block h2 %}
+  <form method="post" action="{% url "discover" pk %}" >
+    {% csrf_token %}
+
+    <p><input type="submit" value="Discover" /></p>
+
+  </form>
+
+
+{% endblock %}
