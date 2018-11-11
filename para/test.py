@@ -19,4 +19,13 @@ natlas_obj.snmp_add_credential(snmp_ver, snmp_community)
 
 
 
-natlas_obj.discover_network("10.10.96.1", 1)
+natlas_obj.discover_network("10.200.8.1", 1)
+
+nodes=natlas_obj.get_discovered_nodes()
+
+
+print("TEST!!!!!!")
+print(nodes[0].ip)
+
+
+

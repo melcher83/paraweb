@@ -20,9 +20,20 @@ class Client(models.Model):
 
 class Network_object(models.Model):
     name = models.CharField(verbose_name='Firewall/Router/Switch Name', max_length=100)
-    make = models.CharField(verbose_name='Brand',max_length=30)
-    model = models.CharField(verbose_name='Model', max_length=30)
-    description = models.CharField(verbose_name='Description', max_length=1000, null=True, default=None, blank=True)
+    ip = models.CharField(verbose_name='IP Address',max_length=30)
+    plat = models.CharField(verbose_name='Platform', max_length=30)
+    ios = models.CharField(verbose_name='IOS', max_length=1000, null=True, default=None, blank=True)
+    router = models.CharField(verbose_name='Router', max_length=1000, null=True, default=None, blank=True)
+    ospf_id = models.CharField(verbose_name='OSPF ID', max_length=1000, null=True, default=None, blank=True)
+    bgp_las = models.CharField(verbose_name='BGP LAS', max_length=1000, null=True, default=None, blank=True)
+    hsrp_vip = models.CharField(verbose_name='HSRP VIP', max_length=1000, null=True, default=None, blank=True)
+    serial = models.CharField(verbose_name='Serial', max_length=1000, null=True, default=None, blank=True)
+    ospf_id = models.CharField(verbose_name='OSPF ID', max_length=1000, null=True, default=None, blank=True)
+    bootfile = models.CharField(verbose_name='Bootfile', max_length=1000, null=True, default=None, blank=True)
+    svis = models.CharField(verbose_name='SVIS', max_length=1000, null=True, default=None, blank=True)
+    links = models.CharField(verbose_name='Links', max_length=1000, null=True, default=None, blank=True)
+
+
     #analysis = models.CharField(verbose_name='Analysis', max_length=10000, null=True, default=None, blank=True)
     client = models.ForeignKey(Client, verbose_name="Client", null=True, default=None, blank=True,on_delete = models.CASCADE)
 
