@@ -1,5 +1,7 @@
 import natlas.natlas.natlas
 from para.models import Client
+from para.models import Network_object
+
 
 
 class discover:
@@ -17,4 +19,11 @@ class discover:
 
         natlas_obj.discover_network(form1.rootip, 1)) #discover network
         nodes=natlas_obj.get_discovered_nodes()
-        print(nodes[1].serial)
+        x=0
+        for n in nodes:
+            obj[x]=Network_object()
+            obj[x]= n.serial
+            print(obj[x].serial)
+            x++
+
+
