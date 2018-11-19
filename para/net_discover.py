@@ -17,13 +17,13 @@ class discover:
 
         natlas_obj.snmp_add_credential(2, form1.snmp_com) #add snmp credentials
 
-        natlas_obj.discover_network(form1.rootip, 1)) #discover network
+        natlas_obj.discover_network(form1.rootip, 1) #discover network
         nodes=natlas_obj.get_discovered_nodes()
         x=0
         for n in nodes:
             obj[x]=Network_object()
             obj[x]= n.serial
             print(obj[x].serial)
-            x++
+            x = x+1
 
 
