@@ -4,14 +4,6 @@ from django.db import models
 class Client(models.Model):
     #Title = models.CharField(verbose_name='Title', max_length=30,null=True, default=None, blank=True)
     client = models.CharField(verbose_name='Client', max_length=30)
-    streetaddress = models.CharField(verbose_name='Street Address', max_length=300)
-    city = models.CharField(verbose_name='City', max_length=30)
-    state = models.CharField(verbose_name='State', max_length=30)
-    date = models.DateField(verbose_name='Date Performed')
-    zip = models.CharField(verbose_name='Zip Code', max_length=5)
-    date_end = models.DateField(verbose_name='Date Ended',null=True, default=None, blank=True)
-    contact = models.CharField(verbose_name='Contact', max_length=100)
-    email = models.EmailField(verbose_name='Email',null=True, default=None)
     rootip = models.CharField(verbose_name='IP ROOT', null=True, default=None,max_length=300)
     snmp_com = models.CharField(verbose_name='SNMPv2 Community', null=True, default=None, max_length=300)
 
