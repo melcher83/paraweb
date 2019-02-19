@@ -14,6 +14,7 @@ def page(request,pk):
 
 
         _thread.start_new_thread(discover,(pk,))
+        #discover(pk)
         return render(request, 'discover.html', {'pk': pk})
     else:
         return render(request, 'discover.html', {'pk': pk})

@@ -144,11 +144,20 @@ class natlas_network:
 
         ni = 0
         for n in self.nodes:
+            #print(ni)
+
             ni = ni + 1
 
+            #print(ni)
+
+
             indicator = '+'
+
+            #print(n.snmpobj.success)
             if (n.snmpobj.success == 0):
                 indicator = '!'
+
+            #print (self.verbose)
 
             if (self.verbose > 0):
                 sys.stdout.write('[%i/%i]%s %s (%s)' % (ni, len(self.nodes), indicator, n.name, n.snmpobj._ip))
@@ -172,7 +181,9 @@ class natlas_network:
             n.opts.get_plat          = True
 
             start = timer()
+            print ("Query")
             n.query_node()
+            print ("end Query")
             end = timer()
             if (self.verbose > 0):
                 print(' %.2f sec' % (end - start))
