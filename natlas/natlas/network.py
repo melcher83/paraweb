@@ -141,29 +141,33 @@ class natlas_network:
 
         if (self.verbose > 0):
             print('\nCollecting node details...')
-
+        print("initializing ni")
         ni = 0
         for n in self.nodes:
             #print(ni)
-
+            print("add to ni")
             ni = ni + 1
 
             #print(ni)
 
-
+            print("initializing indicator")
             indicator = '+'
 
             #print(n.snmpobj.success)
+            print("success?")
             if (n.snmpobj.success == 0):
                 indicator = '!'
 
             #print (self.verbose)
+            print("verbose?")
+            print (self.verbose)
+            #if (self.verbose > 0):
+                #print("write to screen")
+                #print(str(ni) + "/" + str(len(self.nodes)) + " " + indicator + " " + " " + n.name + " " + str(n.snmpobj._ip))
 
-            if (self.verbose > 0):
-                sys.stdout.write('[%i/%i]%s %s (%s)' % (ni, len(self.nodes), indicator, n.name, n.snmpobj._ip))
-                sys.stdout.flush()
 
             # set what details to discover for this node
+            print("initializing options")
             n.opts.get_router        = True
             n.opts.get_ospf_id       = True
             n.opts.get_bgp_las       = True

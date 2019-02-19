@@ -20,13 +20,14 @@ class discover:
         natlas_obj.discover_network(form1.rootip, 1) #discover network
         nodes=[]
         nodes=natlas_obj.get_discovered_nodes()
+        print("hrlp")
         x=0
         print ("entering Loop")
         for n in nodes:
             print(x)
-            #obj[x]=Network_object()
-            #obj[x]= n.serial
-            #print(obj[x].serial)
+            #obj=Network_object()
+            obj= n.serial
+            print(obj)
             x = x+1
 
 
