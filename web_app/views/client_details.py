@@ -21,7 +21,7 @@ def page(request,pk):
 
       return render(request, 'client_details.html', {'form' : form})
   else:
-
+    print ("details")
     form1 = Client.objects.get(id=pk)
     form=Form_client(instance=form1)
 

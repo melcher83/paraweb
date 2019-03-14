@@ -1,4 +1,4 @@
-FROM python:3.6.7-jessie
+FROM python:3.7.2
 
 
 CMD ["/bin/bash"]

@@ -12,7 +12,7 @@ services:
       - web
 
   web:
-    image: melcher83/paraweb
+    image: melcher83/paraweb:development
     container_name: web
     command: bash -c "python3 manage.py makemigrations && python3 manage.py migrate && gunicorn Paraweb.wsgi  -b 0.0.0.0:8000"
     depends_on:

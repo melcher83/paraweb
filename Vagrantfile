@@ -68,8 +68,6 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell",
     inline: "apt-get -y install git"
   config.vm.provision "shell",
-    inline: "apt-get -y python-pip"
-  config.vm.provision "shell",
     inline: "curl -fsSL get.docker.com -o get-docker.sh"
   config.vm.provision "shell",
     inline: "sh get-docker.sh"

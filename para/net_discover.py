@@ -6,6 +6,7 @@ from para.models import Network_object
 
 class discover:
     def __init__(self, pk):
+        print ("start")
         form1 = Client.objects.get(id=pk) #get client onject
         natlas_obj = natlas.natlas.natlas() #create natlas object
 
@@ -16,9 +17,11 @@ class discover:
         natlas_obj.set_discover_maxdepth(100) # set discovery depth
 
         natlas_obj.snmp_add_credential(2, form1.snmp_com) #add snmp credentials
-
+        print ("discovering network" + " " + form1.rootip)
         natlas_obj.discover_network(form1.rootip, 1) #discover network
+
         nodes=[]
+        print("getting nodes")
         nodes=natlas_obj.get_discovered_nodes()
         print("hrlp")
         x=0
