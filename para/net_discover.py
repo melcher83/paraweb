@@ -2,11 +2,13 @@ import natlas.natlas.natlas
 from para.models import Client
 from para.models import Network_object
 
+import logging
 
+logging.basicConfig(level=logging.DEBUG,format='%(asctime)s - %(levelname)s - %(message)s')
 
 class discover:
     def __init__(self, pk):
-        print ("start")
+        logging.debug ("start")
         form1 = Client.objects.get(id=pk) #get client onject
         natlas_obj = natlas.natlas.natlas() #create natlas object
 
@@ -16,21 +18,23 @@ class discover:
 
         natlas_obj.set_discover_maxdepth(100) # set discovery depth
 
-        natlas_obj.snmp_add_credential(2, form1.snmp_com) #add snmp credentials
-        print ("discovering network" + " " + form1.rootip)
+        #natlas_obj.snmp_add_credential(2, form1.snmp_com) #add snmp credentials
+        logging.debug ("discovering network" + " " + form1.rootip)
         natlas_obj.discover_network(form1.rootip, 1) #discover network
 
         nodes=[]
-        print("getting nodes")
+        logging.debug("getting nodes")
         nodes=natlas_obj.get_discovered_nodes()
-        print("hrlp")
+        logging.debug("hrlp")
         x=0
-        print ("entering Loop")
+        logging.debug ("entering Loop")
         for n in nodes:
-            print(x)
+            logging.debug(x)
             #obj=Network_object()
+            logging.debug(n.serial)
             obj= n.serial
-            print(obj)
+            logging.debug(obj)
             x = x+1
+        logging.debug("Loop Complete")
 
 

@@ -38,6 +38,9 @@ from .mac import natlas_mac
 from .output import natlas_output
 from .output_diagram import natlas_output_diagram
 from .output_catalog import natlas_output_catalog
+import logging
+
+logging.basicConfig(level=logging.DEBUG,format='%(asctime)s - %(levelname)s - %(message)s')
 
 REQUIRES_PYTHON = (3, 6)
 
@@ -100,7 +103,9 @@ class natlas:
 
     def discover_network(self, root_ip, details):
         self.network.discover(root_ip)
+        logging.debug("Entered NATLAS.py")
         if (details == 1):
+            logging.debug("VERBOSITY = 1")
             self.network.discover_details()
         
         # initalize the output objects
