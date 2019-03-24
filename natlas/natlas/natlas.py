@@ -96,6 +96,7 @@ class natlas:
         self.config.snmp_creds.append(cred)
 
     def set_discover_maxdepth(self, depth):
+        logging.debug("Depth:" + str(depth))
         self.network.set_max_depth(int(depth))
 
     def set_verbose(self, verbose):
@@ -105,7 +106,7 @@ class natlas:
         self.network.discover(root_ip)
         logging.debug("Entered NATLAS.py")
         if (details == 1):
-            logging.debug("VERBOSITY = 1")
+            logging.debug("DETAILS = 1")
             self.network.discover_details()
         
         # initalize the output objects

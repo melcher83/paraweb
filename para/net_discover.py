@@ -27,14 +27,15 @@ class discover:
         nodes=natlas_obj.get_discovered_nodes()
         logging.debug("hrlp")
         x=0
+
         logging.debug ("entering Loop")
         for n in nodes:
-            logging.debug(x)
+            #logging.debug(x)
             #obj=Network_object()
-            logging.debug(n.serial)
-            obj= n.serial
+            #logging.debug(nodes[n].serial)
+            obj= n.name
             logging.debug(obj)
-            x = x+1
+            #x = x+1
         logging.debug("Loop Complete")
 
 
