@@ -21,6 +21,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 import web_app.views.index
 import web_app.views.add_client
 import web_app.views.client_details
+import web_app.views.discover
 
 urlpatterns = [
     url (r'^index$', web_app.views.index.page, name='index'),
@@ -28,6 +29,7 @@ urlpatterns = [
     url (r'^add_client$', web_app.views.add_client.page, name='add_client'),
     url(r'^$', web_app.views.add_client.page),
     url(r'^client_details-(?P<pk>\d+)$',web_app.views.client_details.page, name="client_details"),
+    url(r'^discover-(?P<pk>\d+)$',web_app.views.discover.page, name="discover"),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

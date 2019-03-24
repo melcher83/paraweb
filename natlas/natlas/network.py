@@ -28,6 +28,9 @@ from timeit import default_timer as timer
 from .config import natlas_config
 from .util import *
 from .node import *
+import logging
+
+logging.basicConfig(level=logging.DEBUG,format='%(asctime)s - %(levelname)s - %(message)s')
 
 DCODE_ROOT              = 0x01
 DCODE_ERR_SNMP          = 0x02
@@ -95,8 +98,10 @@ class natlas_network:
         to update the self.nodes[] array with more info.
         '''
 
+        logging.debug("Initial Discovery")
+
         if (self.verbose > 0):
-            print('Discovery codes:\n'                                      \
+            logging.debug('Discovery codes:\n'                                      \
                   '    . depth             %s connection error\n'           \
                   '    %s discovering node  %s numerating adjacencies\n'    \
                   '    %s include node      %s leaf node\n' %
@@ -105,11 +110,13 @@ class natlas_network:
                    DCODE_INCLUDE_STR, DCODE_LEAF_STR)
                 )
 
-            print('Discovering network...')
+            logging.debug('Discovering network...')
 
         # Start the process of querying this node and recursing adjacencies.
         node, new_node = self.__query_node(ip, 'UNKNOWN')
         self.root_node = node
+
+
 
         if (node != None):
             self.nodes.append(node)
@@ -140,21 +147,35 @@ class natlas_network:
             return
 
         if (self.verbose > 0):
-            print('\nCollecting node details...')
-
+           logging.debug('Collecting node details...')
+        #print("initializing ni")
         ni = 0
         for n in self.nodes:
+            logging.debug("Node" + " " + str(ni))
+            #print("add to ni")
+
             ni = ni + 1
 
+            #print(ni)
+
+            logging.debug("initializing indicator")
             indicator = '+'
+
+            #print(n.snmpobj.success)
+            logging.debug("success?")
             if (n.snmpobj.success == 0):
                 indicator = '!'
 
+            #print (self.verbose)
+            logging.debug("verbose?")
+            logging.debug(self.verbose)
             if (self.verbose > 0):
-                sys.stdout.write('[%i/%i]%s %s (%s)' % (ni, len(self.nodes), indicator, n.name, n.snmpobj._ip))
-                sys.stdout.flush()
+                #print("write to screen")
+                logging.debug(str(ni) + "/" + str(len(self.nodes)) + " " + indicator + " " + " " + n.name + " " + str(n.snmpobj._ip))
+
 
             # set what details to discover for this node
+            logging.debug("initializing options")
             n.opts.get_router        = True
             n.opts.get_ospf_id       = True
             n.opts.get_bgp_las       = True
@@ -172,15 +193,17 @@ class natlas_network:
             n.opts.get_plat          = True
 
             start = timer()
+            logging.debug ("Query")
             n.query_node()
+            logging.debug ("end Query")
             end = timer()
             if (self.verbose > 0):
-                print(' %.2f sec' % (end - start))
+                logging.debug(' %.2f sec' % (end - start))
 
         # There is some back fill information we can populate now that
         # we know all there is to know.
         if (self.verbose > 0):
-            print('\nBack filling node details...')
+            logging.debug('\nBack filling node details...')
 
         for n in self.nodes:
             # Find and link VPC nodes together for easy reference later

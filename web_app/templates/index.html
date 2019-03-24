@@ -20,7 +20,7 @@
     {% for client in allclients %}
       <tr>
           <td><a href="client_details-{{ client.id }}">{{ client.id }}</a></td>
-          <td><a href="client_details-{{ client.client }}">{{ client.client }}</a></td>
+          <td><a href="client_details-{{ client.id }}">{{ client.client }}</a></td>
         <td>x</td>
       </tr>
     {% endfor %}
