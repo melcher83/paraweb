@@ -31,10 +31,10 @@ class discover:
         logging.debug ("entering Loop")
         for n in nodes:
             #logging.debug(x)
-            #obj=Network_object()
+            obj=Network_object()
             #logging.debug(nodes[n].serial)
-            obj= n.name
-            logging.debug(obj)
+            obj.name= n.name
+            #logging.debug(obj)
             #x = x+1
         logging.debug("Loop Complete")
 
