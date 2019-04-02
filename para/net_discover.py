@@ -1,6 +1,7 @@
 import natlas.natlas.natlas
 from para.models import Client
 from para.models import Network_object
+from django import forms
 
 import logging
 
@@ -34,8 +35,18 @@ class discover:
             obj=Network_object()
             #logging.debug(nodes[n].serial)
             obj.name= n.name
-            #logging.debug(obj)
+            obj.client_id = pk
+            obj.serial=n.serial
+            obj.ip = n.ip
+            obj.plat = n.plat
+
+            logging.debug("object.client" + " " + obj.client_id)
+            logging.debug(obj.serial)
             #x = x+1
+            obj.save()
+
         logging.debug("Loop Complete")
+
+
 
 
