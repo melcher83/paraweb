@@ -63,7 +63,7 @@ Vagrant.configure("2") do |config|
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
   config.vm.network "forwarded_port", guest: 8000, host: 8000
-  config.vm.network "forwarded_port", guest: 2375, host: 2375
+  #config.vm.network "forwarded_port", guest: 2375, host: 2375
   config.vm.provision "shell",
     inline: "apt-get update"
   #config.vm.provision "shell",
@@ -84,8 +84,8 @@ Vagrant.configure("2") do |config|
     inline: "apt-get -y install  python3-pip "
   config.vm.provision "shell",
     inline: "pip3 install -r /vagrant/requirements.txt"
-  #config.vm.provision "shell",
-  #  inline: "sudo systemctl restart docker.service"
+  config.vm.provision "shell",
+    inline: "apt-get -y install graphviz"
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
 
