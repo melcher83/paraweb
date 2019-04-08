@@ -29,7 +29,7 @@ from .config import natlas_config
 from .util import *
 from .node import *
 import logging
-
+import re
 logging.basicConfig(level=logging.DEBUG,format='%(asctime)s - %(levelname)s - %(message)s')
 
 DCODE_ROOT              = 0x01
@@ -401,6 +401,11 @@ class natlas_network:
             # some neighbors may not advertise IP addresses - default them to 0.0.0.0
             if (n.remote_ip == None):
                 n.remote_ip = '0.0.0.0'
+            pat = re.compile("^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$")
+            test=pat.match(n.remote_ip)
+            if test !=True:
+                logging.debug('REMOTE: ' + n.remote_ip)
+                n.remote_ip='0.0.0.0'
 
             # check the ACL
             acl_action = self.__match_node_acl(n.remote_ip, n.remote_name)

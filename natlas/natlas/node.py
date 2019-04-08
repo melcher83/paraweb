@@ -469,6 +469,8 @@ class natlas_node:
         neighbors = []
         snmpobj = self.snmpobj
 
+        num = 1
+
         self.lldp_vbtbl = snmpobj.get_bulk(OID_LLDP)
         if (self.lldp_vbtbl == None):
             logging.debug('No LLDP Neighbors Found.')
@@ -479,7 +481,7 @@ class natlas_node:
         for row in self.lldp_vbtbl:
             for name, val in row:
                 name = str(name)
-                logging.debug(name)
+                logging.debug("NAme: " + name)
                 logging.debug("SNOOP")
                 if (name.startswith(OID_LLDP) == 0 ):
                     logging.debug("Starts with: " + str(name.startswith(OID_LLDP)))
@@ -487,16 +489,23 @@ class natlas_node:
                     continue
 
                 t = name.split('.')
+
+                logging.debug("t= " + str(t))
                 ifidx = t[12]
                 ifidx2 = t[13]
                 logging.debug("POOP")
-                rip = ''
+                rip = '.'.join(t[16:])
+                logging.debug("RIP1: " + rip)
+
                 for r in self.lldp_vbtbl:
                     for     n, v in r:
-                        logging.debug("LLDP LOOPY")
+                        #logging.debug("LLDP LOOPY")
+                        logging.debug("DEVADDR" + " : " +  str(snmpobj.cache_lookup(self.lldp_vbtbl, OID_LLDP_DEVID + '.' + ifidx + '.' + ifidx2)))
                         n = str(n)
+                        logging.debug("N: " + n)
                         if (n.startswith(OID_LLDP_DEVADDR + '.' + ifidx + '.' + ifidx2)):
                             t2 = n.split('.')
+                            logging.debug("t2= " + str(t2))
                             rip = '.'.join(t2[16:])
                             logging.debug("RIP: " + rip)
 
@@ -508,7 +517,8 @@ class natlas_node:
                 rport = self.shorten_port_name(rport)
 
                 devid = snmpobj.cache_lookup(self.lldp_vbtbl, OID_LLDP_DEVID + '.' + ifidx + '.' + ifidx2)
-                logging.debug("LLDP TEST")
+                logging.debug("LLDP TEST: " + str(OID_LLDP_DEVID ))
+
                 try:
                     mac_seg = [devid[x:x+4] for x in xrange(2, len(devid), 4)]
                     devid = '.'.join(mac_seg)
@@ -524,12 +534,14 @@ class natlas_node:
                     rimg = self.__format_ios_ver(rimg)
 
                 name = snmpobj.cache_lookup(self.lldp_vbtbl, OID_LLDP_DEVNAME + '.' + ifidx + '.' + ifidx2)
+
                 if ((name == None) | (name == '')):
                     name = devid
 
+
                 link                  = self.__get_node_link_info(ifidx, ifidx2)
                 link.remote_ip        = rip
-                #logging.debug(rip)
+                logging.debug(str("RIP2: " + link.remote_ip))
                 link.remote_name      = name
                 link.discovered_proto = 'lldp'
                 link.local_port       = lport
@@ -538,7 +550,6 @@ class natlas_node:
                 link.remote_ios       = rimg
                 link.remote_mac       = devid
                 logging.debug("Appending: " + str(link.remote_name))
-
                 neighbors.append(link)
 
         return neighbors
