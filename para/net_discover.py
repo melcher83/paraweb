@@ -38,6 +38,7 @@ class discover:
             obj.client_id = pk
             obj.serial=n.serial
             obj.ip = n.ip
+            logging.debug("n.ip: " + str(n.ip))
             obj.plat = n.plat
 
             logging.debug("object.client" + " " + obj.client_id)
