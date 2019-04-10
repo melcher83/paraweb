@@ -1,6 +1,7 @@
 import natlas.natlas.natlas
 from para.models import Client
 from para.models import Network_object
+from django import forms
 
 import logging
 
@@ -30,12 +31,23 @@ class discover:
 
         logging.debug ("entering Loop")
         for n in nodes:
-            #logging.debug(x)
-            #obj=Network_object()
+            ##logging.debug(x)
+            obj=Network_object()
             #logging.debug(nodes[n].serial)
-            obj= n.name
-            logging.debug(obj)
+            obj.name= n.name
+            obj.client_id = pk
+            obj.serial=n.serial
+            obj.ip = n.ip
+            logging.debug("n.ip: " + str(n.ip))
+            obj.plat = n.plat
+
+            logging.debug("object.client" + " " + obj.client_id)
+            logging.debug(obj.serial)
             #x = x+1
+            obj.save()
+
         logging.debug("Loop Complete")
+
+
 
 

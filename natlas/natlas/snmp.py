@@ -50,6 +50,7 @@ OID_LLDP_DEVPORT        = '1.0.8802.1.1.2.1.4.1.1.7.0'
 OID_LLDP_DEVNAME        = '1.0.8802.1.1.2.1.4.1.1.9.0'
 OID_LLDP_DEVDESC        = '1.0.8802.1.1.2.1.4.1.1.10.0'
 OID_LLDP_DEVADDR        = '1.0.8802.1.1.2.1.4.2.1.5.0'
+OID_LLDP_DEVADDR2       = '1.0.8802.1.1.2.1.4.2.1.5.2865'
 
 OID_TRUNK_ALLOW         = '1.3.6.1.4.1.9.9.46.1.6.1.1.4'            # + ifidx (Allowed VLANs)
 OID_TRUNK_NATIVE        = '1.3.6.1.4.1.9.9.46.1.6.1.1.5'            # + ifidx (Native VLAN)

@@ -30,6 +30,7 @@ urlpatterns = [
     url(r'^$', web_app.views.add_client.page),
     url(r'^client_details-(?P<pk>\d+)$',web_app.views.client_details.page, name="client_details"),
     url(r'^discover-(?P<pk>\d+)$',web_app.views.discover.page, name="discover"),
+    url(r'^admin/', admin.site.urls),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
