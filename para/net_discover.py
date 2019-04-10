@@ -1,7 +1,6 @@
 import natlas.natlas.natlas
 from para.models import Client
 from para.models import Network_object
-from django import forms
 
 import logging
 
