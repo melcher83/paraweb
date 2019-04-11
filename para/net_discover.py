@@ -16,7 +16,7 @@ class discover:
 
         natlas_obj.config_load(config) #load config
 
-        natlas_obj.set_discover_maxdepth(100) # set discovery depth
+        #natlas_obj.set_discover_maxdepth(100) # set discovery depth
 
         #natlas_obj.snmp_add_credential(2, form1.snmp_com) #add snmp credentials
         logging.debug ("discovering network" + " " + form1.rootip)
@@ -46,6 +46,8 @@ class discover:
             obj.save()
 
         logging.debug("Loop Complete")
+
+
 
 
 
